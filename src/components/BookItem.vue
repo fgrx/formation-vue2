@@ -20,15 +20,17 @@
     </v-card-actions>
 
     <v-card-actions>
-      <v-btn @click="buyAction(book)" color="orange" block>Acheter</v-btn>
+      <v-btn @click="buyMixinAction(book)" color="orange" block>Acheter</v-btn>
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
+import BuyBook from "@/mixins/BuyBook";
 import EventBus from "@/plugins/eventBus";
 
 export default {
+  mixins: [BuyBook],
   props: {
     book: {
       type: Object,
@@ -39,9 +41,6 @@ export default {
     addToFavsAction() {
       this.$emit("addToFavs", this.book);
       EventBus.$emit("notification", "Livre ajouté à ma wishlist");
-    },
-    buyAction(book) {
-      this.$store.dispatch("addItemAction", book);
     },
   },
 };

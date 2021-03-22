@@ -18,6 +18,21 @@
           color="accent"
         ></v-rating>
         <p class="book__description">{{ book.description }}</p>
+
+        <Note fontcolor="blue" bgcolor="grey lighten-4">{{
+          bookDisponibility
+        }}</Note>
+
+        <p>
+          <v-btn
+            @click="buyMixinAction(book)"
+            v-if="book.quantity > 0"
+            dark
+            color="pink"
+            x-large
+            ><v-icon>mdi-basket</v-icon> Acheter</v-btn
+          >
+        </p>
       </v-col>
     </v-row>
     <div class="book__content">
@@ -29,14 +44,32 @@
 <script>
 import bookService from "@/services/bookService";
 import Loading from "@/components/Loading.vue";
+import Note from "@/components/Note.vue";
+
+import BuyBook from "@/mixins/BuyBook";
 
 export default {
   components: {
     Loading,
+    Note,
+  },
+  mixins: [BuyBook],
+  computed: {
+    bookDisponibility() {
+      switch (this.book) {
+        case this.book <= 0:
+          return "Livre indisponible";
+        case this.book === 1:
+          return "Dernier exemplaire en stock !";
+        default:
+          return "En stock";
+      }
+    },
   },
   data() {
     return {
       book: {},
+      colorNote: "",
       isLoading: false,
     };
   },
