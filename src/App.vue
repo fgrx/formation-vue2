@@ -6,80 +6,89 @@
 
     <v-main>
       <v-container>
-        <h2>Rechercher</h2>
-        <v-row>
-          <v-col cols="12" sm="5">
-            <v-text-field
-              v-model="searchText"
-              label="Mot clef"
-              @keydown="searchAction"
-            ></v-text-field>
-          </v-col>
+        <Loading v-if="isLoading" />
 
-          <v-col cols="12" sm="5">
-            <v-select
-              :items="itemsLangue"
-              v-model="searchLangue"
-              label="langue"
-              @change="searchAction"
-            ></v-select>
-          </v-col>
-
-          <v-btn color="primary" @click="reinitAction">Réinitialiser</v-btn>
-        </v-row>
-        <div v-if="searchText || searchLangue">
-          <h2>Résultats de la recherche</h2>
-          <h3 v-if="booksSearchResults.length === 0">Aucun livre trouvé</h3>
+        <template v-if="!isLoading">
+          <h2>Rechercher</h2>
           <v-row>
-            <v-col
-              cols="6"
-              sm="4"
-              v-for="book in booksSearchResults"
-              :key="book.id"
-            >
-              <BookItem
-                :book="book"
-                @addToFavs="addToFavoritesAction($event)"
-              />
+            <v-col cols="12" sm="5">
+              <v-text-field
+                v-model="searchText"
+                label="Mot clef"
+                @keydown="searchAction"
+              ></v-text-field>
             </v-col>
-          </v-row>
-        </div>
 
-        <v-card v-if="favorites.length" class="mt-5 mb-10">
-          <v-card-title><h2>livres dans ma wishlist</h2></v-card-title>
-          <v-card-text>
-            <ul>
-              <li v-for="favorite in favorites" :key="favorite.key">
-                <v-btn text @click="deleteWishAction(favorite)"
-                  ><v-icon>mdi-delete</v-icon></v-btn
-                >
-                {{ favorite.title }}
-              </li>
-            </ul>
-          </v-card-text>
-        </v-card>
-
-        <div v-if="!searchText && !searchLangue">
-          <h2>Top livres</h2>
-          <v-row>
-            <v-col cols="6" sm="4" v-for="book in topBooks" :key="book.id">
-              <BookItem
-                :book="book"
-                @addToFavs="addToFavoritesAction($event)"
-              />
+            <v-col cols="12" sm="5">
+              <v-select
+                :items="itemsLangue"
+                v-model="searchLangue"
+                label="langue"
+                @change="searchAction"
+              ></v-select>
             </v-col>
-          </v-row>
 
-          <h2>Tous les livres</h2>
-          <v-row>
-            <v-col cols="6" sm="4" v-for="book in classicBooks" :key="book.id">
-              <BookItem
-                :book="book"
-                @addToFavs="addToFavoritesAction($event)"
-              />
-            </v-col>
+            <v-btn color="primary" @click="reinitAction">Réinitialiser</v-btn>
           </v-row>
-        </div>
+          <div v-if="searchText || searchLangue">
+            <h2>Résultats de la recherche</h2>
+            <h3 v-if="booksSearchResults.length === 0">Aucun livre trouvé</h3>
+            <v-row>
+              <v-col
+                cols="6"
+                sm="4"
+                v-for="book in booksSearchResults"
+                :key="book.id"
+              >
+                <BookItem
+                  :book="book"
+                  @addToFavs="addToFavoritesAction($event)"
+                />
+              </v-col>
+            </v-row>
+          </div>
+
+          <v-card v-if="favorites.length" class="mt-5 mb-10">
+            <v-card-title><h2>livres dans ma wishlist</h2></v-card-title>
+            <v-card-text>
+              <ul>
+                <li v-for="favorite in favorites" :key="favorite.key">
+                  <v-btn text @click="deleteWishAction(favorite)"
+                    ><v-icon>mdi-delete</v-icon></v-btn
+                  >
+                  {{ favorite.title }}
+                </li>
+              </ul>
+            </v-card-text>
+          </v-card>
+
+          <div v-if="!searchText && !searchLangue">
+            <h2>Top livres</h2>
+            <v-row>
+              <v-col cols="6" sm="4" v-for="book in topBooks" :key="book.id">
+                <BookItem
+                  :book="book"
+                  @addToFavs="addToFavoritesAction($event)"
+                />
+              </v-col>
+            </v-row>
+
+            <h2>Tous les livres</h2>
+            <v-row>
+              <v-col
+                cols="6"
+                sm="4"
+                v-for="book in classicBooks"
+                :key="book.id"
+              >
+                <BookItem
+                  :book="book"
+                  @addToFavs="addToFavoritesAction($event)"
+                />
+              </v-col>
+            </v-row>
+          </div>
+        </template>
       </v-container>
     </v-main>
 
@@ -94,25 +103,25 @@
 </template>
 
 <script>
-import booksdb from "@/data/booksdb";
-
 import BookItem from "@/components/BookItem.vue";
 import Notification from "@/components/Notification.vue";
 import DialogDiscounts from "@/components/DialogDiscounts.vue";
+import Loading from "@/components/Loading.vue";
 
 export default {
   name: "App",
 
-  components: { BookItem, Notification, DialogDiscounts },
+  components: { BookItem, Notification, DialogDiscounts, Loading },
 
   data: () => ({
-    books: booksdb,
+    books: [],
     dialogDiscounts: false,
     discounts: [],
     searchText: null,
     searchLangue: null,
     booksSearchResults: [],
     favorites: [],
+    isLoading: false,
     itemsLangue: [
       { text: "Tout", value: null },
       { text: "Français", value: "fr" },
@@ -146,9 +155,14 @@ export default {
     },
   },
 
-  created() {
+  async created() {
     this.discounts = this.books.filter((book) => book.discount);
     this.dialogDiscounts = this.discounts.length ? true : false;
+
+    this.isLoading = true;
+    const booksInDB = await this.axios.get("http://localhost:3000/books");
+    this.books = booksInDB.data;
+    this.isLoading = false;
   },
 
   methods: {
