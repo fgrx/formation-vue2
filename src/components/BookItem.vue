@@ -1,9 +1,11 @@
 <template>
   <v-card :color="book.top ? 'yellow lighten-4' : null" min-height="650px">
-    <v-img
-      :src="book.image"
-      :alt="'couverture du livre : ' + book.title"
-    ></v-img>
+    <router-link :to="{ name: 'Book', params: { id: book.id } }">
+      <v-img
+        :src="book.image"
+        :alt="'couverture du livre : ' + book.title"
+      ></v-img>
+    </router-link>
     <v-card-title>{{ book.title }}</v-card-title>
     <v-card-text>{{ book.description }}</v-card-text>
     <v-card-actions>
