@@ -1,60 +1,40 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+    <v-app-bar app color="primary" dark>
+      <v-toolbar-title>Magasin de livres pour codeurs web</v-toolbar-title>
     </v-app-bar>
 
-    <v-main>
-      <HelloWorld/>
-    </v-main>
+    <v-content>
+      <v-container>
+        <v-row>
+          <v-col cols="6" sm="4" v-for="book in books" :key="book.id">
+            <v-card :color="book.top ? 'yellow lighten-4' : null" min-height="650px">
+              <v-img :src="book.image" :alt="'couverture du livre : ' + book.title "></v-img>
+              <v-card-title>{{ book.title }}</v-card-title>
+              <v-card-text>{{ book.description}}</v-card-text>
+              <v-card-actions>
+                <span v-if="book.quantity>0">Disponible</span>
+                <span v-else>Indisponible</span>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import booksdb from "@/data/booksdb";
 
 export default {
-  name: 'App',
+  name: "App",
 
-  components: {
-    HelloWorld,
-  },
+  components: {},
 
   data: () => ({
-    //
-  }),
+    books: booksdb
+  })
 };
 </script>
+
