@@ -23,6 +23,23 @@
         </v-row>
       </v-container>
     </v-main>
+
+    <v-dialog v-model="dialog" persistent max-width="400">
+      <v-card>
+        <v-card-title class="headline">Promotions ! </v-card-title>
+        <v-card-text>
+          Les livres suivant sont en promotion :
+          <ul>
+            <li v-for="promo in promos" :key="promo.id">
+              {{ promo.title }} - {{ promo.author }}
+            </li>
+          </ul>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn color="primary" text @click="dialog = false">Fermer</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-app>
 </template>
 
@@ -38,6 +55,8 @@ export default {
 
   data: () => ({
     books: booksdb,
+    promos: [],
+    dialog: false,
   }),
   computed: {
     topBooks() {
@@ -64,6 +83,16 @@ export default {
     classicBooks() {
       return this.books.filter((book) => !book.top);
     },
+  },
+
+  mounted() {
+    console.log("Component mounted !");
+  },
+
+  created() {
+    console.log("Component created !");
+    this.promos = this.books.filter((book) => book.discount);
+    this.dialog = this.promos.length ? true : false;
   },
 };
 </script>
