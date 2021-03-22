@@ -12,7 +12,7 @@
             <v-text-field
               v-model="searchText"
               label="Mot clef"
-              @keydown="search"
+              @keydown="searchAction"
             ></v-text-field>
           </v-col>
 
@@ -21,11 +21,11 @@
               :items="itemsLangue"
               v-model="searchLangue"
               label="langue"
-              @change="search"
+              @change="searchAction"
             ></v-select>
           </v-col>
 
-          <v-btn color="primary" @click="reinit">Réinitialiser</v-btn>
+          <v-btn color="primary" @click="reinitAction">Réinitialiser</v-btn>
         </v-row>
         <div v-if="searchText || searchLangue">
           <h2>Résultats de la recherche</h2>
@@ -37,7 +37,10 @@
               v-for="book in booksSearchResults"
               :key="book.id"
             >
-              <BookItem :book="book" @addToFavs="addToFavorites($event)" />
+              <BookItem
+                :book="book"
+                @addToFavs="addToFavoritesAction($event)"
+              />
             </v-col>
           </v-row>
         </div>
@@ -47,7 +50,7 @@
           <v-card-text>
             <ul>
               <li v-for="favorite in favorites" :key="favorite.key">
-                <v-btn text @click="deleteWish(favorite)"
+                <v-btn text @click="deleteWishAction(favorite)"
                   ><v-icon>mdi-delete</v-icon></v-btn
                 >
                 {{ favorite.title }}
@@ -60,14 +63,20 @@
           <h2>Top livres</h2>
           <v-row>
             <v-col cols="6" sm="4" v-for="book in topBooks" :key="book.id">
-              <BookItem :book="book" @addToFavs="addToFavorites($event)" />
+              <BookItem
+                :book="book"
+                @addToFavs="addToFavoritesAction($event)"
+              />
             </v-col>
           </v-row>
 
           <h2>Tous les livres</h2>
           <v-row>
             <v-col cols="6" sm="4" v-for="book in classicBooks" :key="book.id">
-              <BookItem :book="book" @addToFavs="addToFavorites($event)" />
+              <BookItem
+                :book="book"
+                @addToFavs="addToFavoritesAction($event)"
+              />
             </v-col>
           </v-row>
         </div>
@@ -76,22 +85,11 @@
 
     <Notification />
 
-    <v-dialog v-model="dialog" persistent max-width="400">
-      <v-card>
-        <v-card-title class="headline">Promotions ! </v-card-title>
-        <v-card-text>
-          Les livres suivant sont en promotion :
-          <ul>
-            <li v-for="promo in promos" :key="promo.id">
-              {{ promo.title }} - {{ promo.author }}
-            </li>
-          </ul>
-        </v-card-text>
-        <v-card-actions>
-          <v-btn color="primary" text @click="dialog = false">Fermer</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
+    <DialogDiscounts
+      @close-dialog="closeDialogDiscountsAction"
+      :dialog="dialogDiscounts"
+      :discounts="discounts"
+    />
   </v-app>
 </template>
 
@@ -100,16 +98,17 @@ import booksdb from "@/data/booksdb";
 
 import BookItem from "@/components/BookItem.vue";
 import Notification from "@/components/Notification.vue";
+import DialogDiscounts from "@/components/DialogDiscounts.vue";
 
 export default {
   name: "App",
 
-  components: { BookItem, Notification },
+  components: { BookItem, Notification, DialogDiscounts },
 
   data: () => ({
     books: booksdb,
-    promos: [],
-    dialog: false,
+    dialogDiscounts: false,
+    discounts: [],
     searchText: null,
     searchLangue: null,
     booksSearchResults: [],
@@ -147,18 +146,13 @@ export default {
     },
   },
 
-  mounted() {
-    console.log("Component mounted !");
-  },
-
   created() {
-    console.log("Component created !");
-    this.promos = this.books.filter((book) => book.discount);
-    //this.dialog = this.promos.length ? true : false;
+    this.discounts = this.books.filter((book) => book.discount);
+    this.dialogDiscounts = this.discounts.length ? true : false;
   },
 
   methods: {
-    search() {
+    searchAction() {
       this.booksSearchResults = this.books;
 
       if (this.searchLangue)
@@ -174,7 +168,7 @@ export default {
         );
       }
     },
-    reinit() {
+    reinitAction() {
       // Autre écriture possible :
       // this.booksSearchResults = [];
       // this.searchText = null;
@@ -186,16 +180,19 @@ export default {
         null,
       ];
     },
-    addToFavorites(book) {
+    addToFavoritesAction(book) {
       this.favorites.push(book);
     },
-    deleteWish(bookToDelete) {
+    deleteWishAction(bookToDelete) {
       // méthode 1
       // this.favorites=this.favorites.filter(book => book.id!==bookToDelete.id)
 
       //méthode 2
       const position = this.favorites.indexOf(bookToDelete);
       this.favorites.splice(position, 1);
+    },
+    closeDialogDiscountsAction() {
+      this.dialogDiscounts = false;
     },
   },
 };
