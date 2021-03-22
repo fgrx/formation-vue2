@@ -1,4 +1,5 @@
- const booksdb =  [
+{
+	"books": [
 		{
 			"id" : "5s48s81",
 			"title" : "Coder proprement",
@@ -22,8 +23,7 @@
 			"price" : 34,
 			"quantity" : 2,
 			"lang" : "fr",
-			"rating" : 4,
-			"discount":29
+			"rating" : 4
 		},
 		{
 			"id" : "fds4845",
@@ -48,8 +48,7 @@
 			"quantity" : 3,
 			"lang" : "fr",
 			"rating" :4,
-			"top" : true,
-			"discount":24.9
+			"top" : true
 		},
 		{
 			"id" : "xx788s8s1",
@@ -123,7 +122,6 @@
 			"quantity" : 2,
 			"rating" :2,
 			"lang" : "en"
-		},
+		}
 	]
-
-export default booksdb;
+}
