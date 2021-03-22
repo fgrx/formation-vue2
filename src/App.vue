@@ -36,17 +36,13 @@
 <script>
 import Notification from "@/components/Notification.vue";
 import DialogBasket from "@/components/DialogBasket.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "App",
   components: { Notification, DialogBasket },
   computed: {
-    items() {
-      return this.$store.state.basket.items;
-    },
-    totalPanier() {
-      return this.items.reduce((reducer, item) => reducer + item.price, 0);
-    },
+    ...mapGetters(["items"]),
   },
   data() {
     return {
