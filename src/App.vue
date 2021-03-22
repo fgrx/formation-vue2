@@ -37,28 +37,44 @@
               v-for="book in booksSearchResults"
               :key="book.id"
             >
-              <BookItem :book="book" />
+              <BookItem :book="book" @addToFavs="addToFavorites($event)" />
             </v-col>
           </v-row>
         </div>
+
+        <v-card v-if="favorites.length" class="mt-5 mb-10">
+          <v-card-title><h2>livres dans ma wishlist</h2></v-card-title>
+          <v-card-text>
+            <ul>
+              <li v-for="favorite in favorites" :key="favorite.key">
+                <v-btn text @click="deleteWish(favorite)"
+                  ><v-icon>mdi-delete</v-icon></v-btn
+                >
+                {{ favorite.title }}
+              </li>
+            </ul>
+          </v-card-text>
+        </v-card>
 
         <div v-if="!searchText && !searchLangue">
           <h2>Top livres</h2>
           <v-row>
             <v-col cols="6" sm="4" v-for="book in topBooks" :key="book.id">
-              <BookItem :book="book" />
+              <BookItem :book="book" @addToFavs="addToFavorites($event)" />
             </v-col>
           </v-row>
 
           <h2>Tous les livres</h2>
           <v-row>
             <v-col cols="6" sm="4" v-for="book in classicBooks" :key="book.id">
-              <BookItem :book="book" />
+              <BookItem :book="book" @addToFavs="addToFavorites($event)" />
             </v-col>
           </v-row>
         </div>
       </v-container>
     </v-main>
+
+    <Notification />
 
     <v-dialog v-model="dialog" persistent max-width="400">
       <v-card>
@@ -82,12 +98,13 @@
 <script>
 import booksdb from "@/data/booksdb";
 
-import BookItem from "./components/BookItem.vue";
+import BookItem from "@/components/BookItem.vue";
+import Notification from "@/components/Notification.vue";
 
 export default {
   name: "App",
 
-  components: { BookItem },
+  components: { BookItem, Notification },
 
   data: () => ({
     books: booksdb,
@@ -96,6 +113,7 @@ export default {
     searchText: null,
     searchLangue: null,
     booksSearchResults: [],
+    favorites: [],
     itemsLangue: [
       { text: "Tout", value: null },
       { text: "Français", value: "fr" },
@@ -167,6 +185,17 @@ export default {
         null,
         null,
       ];
+    },
+    addToFavorites(book) {
+      this.favorites.push(book);
+    },
+    deleteWish(bookToDelete) {
+      // méthode 1
+      // this.favorites=this.favorites.filter(book => book.id!==bookToDelete.id)
+
+      //méthode 2
+      const position = this.favorites.indexOf(bookToDelete);
+      this.favorites.splice(position, 1);
     },
   },
 };
