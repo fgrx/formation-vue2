@@ -6,6 +6,9 @@ export default {
     items: (state) => {
       return state.items;
     },
+    totalBasket: (state) => {
+      return state.items.reduce((reducer, item) => reducer + item.price, 0);
+    },
   },
   mutations: {
     updateItems(state, payload) {

@@ -28,7 +28,7 @@
             </v-list-item>
           </v-list>
 
-          <p><strong>Total : </strong>{{ totalPanier }}</p>
+          <p><strong>Total : </strong>{{ totalBasket }}</p>
         </div>
       </v-card-text>
 
@@ -46,6 +46,10 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
+import shopService from "@/services/shopService";
+
 export default {
   props: {
     dialog: {
@@ -54,12 +58,14 @@ export default {
     },
   },
   computed: {
-    items() {
-      return this.$store.state.basket.items;
-    },
-    totalPanier() {
-      return this.items.reduce((reducer, item) => reducer + item.price, 0);
-    },
+    ...mapGetters(["items", "totalBasket"]),
+    // Les computed suivantes sont remplacées par le mapGetter
+    // items() {
+    //   return this.$store.state.basket.items;
+    // },
+    // totalBasket() {
+    //   return this.items.reduce((reducer, item) => reducer + item.price, 0);
+    // },
   },
   data() {
     return {
@@ -69,12 +75,19 @@ export default {
   methods: {
     closeDialogAction() {
       this.$emit("close-dialog", true);
+      this.thankYouMessage = "";
     },
     deleteItemAction(item) {
       this.$store.dispatch("removeItemAction", item);
     },
-    buyAction() {
-      //todo !
+    async buyAction() {
+      const order = { total: this.totalBasket, items: this.items };
+      const result = await shopService.buyAction(order);
+
+      if (result.status === 201) {
+        this.thankYouMessage = "Merci pour votre commande !";
+        this.$store.dispatch("updateItemsAction", []);
+      }
     },
   },
 };
