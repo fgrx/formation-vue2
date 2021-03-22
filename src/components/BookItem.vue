@@ -18,6 +18,10 @@
         ><v-icon>mdi-heart</v-icon> wishlist</v-btn
       >
     </v-card-actions>
+
+    <v-card-actions>
+      <v-btn @click="buyAction(book)" color="orange" block>Acheter</v-btn>
+    </v-card-actions>
   </v-card>
 </template>
 
@@ -35,6 +39,9 @@ export default {
     addToFavsAction() {
       this.$emit("addToFavs", this.book);
       EventBus.$emit("notification", "Livre ajouté à ma wishlist");
+    },
+    buyAction(book) {
+      this.$store.dispatch("addItemAction", book);
     },
   },
 };
