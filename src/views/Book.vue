@@ -1,6 +1,8 @@
 <template>
   <div>
-    <v-row>
+    <Loading v-if="isLoading" />
+
+    <v-row v-if="!isLoading">
       <v-col cols="12" sm="4">
         <v-img
           :src="book.image"
@@ -25,16 +27,22 @@
 </template>
 
 <script>
+import bookService from "@/services/bookService";
+import Loading from "@/components/Loading.vue";
+
 export default {
+  components: {
+    Loading,
+  },
   data() {
     return {
       book: {},
+      isLoading: false,
     };
   },
   async created() {
-    const bookData = await this.axios.get(
-      `${process.env.VUE_APP_SERVER_URL}/books/${this.$route.params.id}`
-    );
+    const bookID = this.$route.params.id;
+    const bookData = await bookService.getBookByID(bookID);
     this.book = bookData.data;
   },
 };
