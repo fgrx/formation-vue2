@@ -108,6 +108,8 @@ import Notification from "@/components/Notification.vue";
 import DialogDiscounts from "@/components/DialogDiscounts.vue";
 import Loading from "@/components/Loading.vue";
 
+import bookService from "@/services/bookService";
+
 export default {
   name: "App",
 
@@ -160,7 +162,10 @@ export default {
     this.dialogDiscounts = this.discounts.length ? true : false;
 
     this.isLoading = true;
-    const booksInDB = await this.axios.get("http://localhost:3000/books");
+    let booksInDB = [];
+
+    booksInDB = await bookService.getBooks();
+
     this.books = booksInDB.data;
     this.isLoading = false;
   },
