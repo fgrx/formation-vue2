@@ -40,8 +40,7 @@ export default {
 
       const userFound = testConnexion.data;
 
-      console.log(userFound);
-      if (testConnexion.data.length) {
+      if (userFound.length) {
         this.$store.dispatch("updateUserAction", { name: this.login });
         this.$router.push({ name: "Admin" });
       } else {
