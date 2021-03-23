@@ -49,11 +49,6 @@ git checkout 579aa81d11ee5a0beff644d5ab447c14dfa9115f
 git checkout d1523db0706db446a477ba23703faae756f72565
 ```
 
-### Initialisation vue+vuetify
-```
-git checkout 579aa81d11ee5a0beff644d5ab447c14dfa9115f
-```
-
 ### Partie 2 Composants et computed props: 
 ```
 git checkout b78cf85cbcd637796f5fa0b1fc7dff341983e3a3y
