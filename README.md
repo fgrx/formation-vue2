@@ -7,7 +7,12 @@ Se placer dans son répertoire d'exercice et exécuter la commande :
 git clone https://github.com/fgrx/formation-vue2.git
 ```
 
-Se déplacer dans le répertoire créé et installer les dépendances avec
+Se déplacer dans le répertoire créé
+```
+cd formation-vue2
+```
+
+installer les dépendances avec
 ```
 npm install
 ```
