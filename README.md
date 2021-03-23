@@ -42,33 +42,6 @@ npm run serve
 git checkout 579aa81d11ee5a0beff644d5ab447c14dfa9115f
 ```
 
-### Initialisation vue+vuetify
-```
-git checkout 579aa81d11ee5a0beff644d5ab447c14dfa9115f
-```
-
-### Initialisation vue+vuetify
-```
-git checkout 579aa81d11ee5a0beff644d5ab447c14dfa9115f
-```
-
-### Initialisation vue+vuetify
-```
-git checkout 579aa81d11ee5a0beff644d5ab447c14dfa9115f
-```
-
-### Initialisation vue+vuetify
-```
-git checkout 579aa81d11ee5a0beff644d5ab447c14dfa9115f
-```
-
-
-### Initialisation vue+vuetify
-```
-git checkout 579aa81d11ee5a0beff644d5ab447c14dfa9115f
-```
-
-
 ### Partie 1 Boucles et conditions: 
 ```
 git checkout d1523db0706db446a477ba23703faae756f72565
