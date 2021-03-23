@@ -37,6 +37,8 @@ npm run serve
 
 ## Parties de l'exercice
 
+En cas de besoin utiliser "--force" pour forcer le changement de commit
+
 ### Initialisation vue+vuetify
 ```
 git checkout 579aa81d11ee5a0beff644d5ab447c14dfa9115f
