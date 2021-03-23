@@ -1,24 +1,128 @@
-# cours-vue2
+# Exercice pour la formation Vue.js
 
 ## Project setup
+
+Se placer dans son répertoire d'exercice et exécuter la commande :
+```
+git clone https://github.com/fgrx/formation-vue2.git
+```
+
+Se déplacer dans le répertoire créé et installer les dépendances avec
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+Lancer le projet avec
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+
+## Parties de l'exercice
+
+### Initialisation vue+vuetify
 ```
-npm run build
+git checkout 579aa81d11ee5a0beff644d5ab447c14dfa9115f
 ```
 
-### Lints and fixes files
+### Initialisation vue+vuetify
 ```
-npm run lint
+git checkout 579aa81d11ee5a0beff644d5ab447c14dfa9115f
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Initialisation vue+vuetify
+```
+git checkout 579aa81d11ee5a0beff644d5ab447c14dfa9115f
+```
+
+### Initialisation vue+vuetify
+```
+git checkout 579aa81d11ee5a0beff644d5ab447c14dfa9115f
+```
+
+### Initialisation vue+vuetify
+```
+git checkout 579aa81d11ee5a0beff644d5ab447c14dfa9115f
+```
+
+
+### Initialisation vue+vuetify
+```
+git checkout 579aa81d11ee5a0beff644d5ab447c14dfa9115f
+```
+
+
+### Partie 1 Boucles et conditions: 
+```
+git checkout d1523db0706db446a477ba23703faae756f72565
+```
+
+### Initialisation vue+vuetify
+```
+git checkout 579aa81d11ee5a0beff644d5ab447c14dfa9115f
+```
+
+### Partie 2 Composants et computed props: 
+```
+git checkout b78cf85cbcd637796f5fa0b1fc7dff341983e3a3y
+```
+
+### Partie 3 Life cycle hooks: 
+```
+git checkout 86fae423f2872a3a803808b69f4b98186ab1640b
+```
+
+### Partie 4 Formulaire: 
+```
+git checkout 0b349ec31565430000e9ac0f2b129ccee1457f3c
+```
+
+### Partie 5 Communication enfant à parent et eventBus: 
+```
+git checkout e83bd6f087d62cd64d0e0afdd0999c2a8572e80b
+```
+
+### Partie 6 Axios et communications HTTP: 
+```
+git checkout 468fa18764cd437a5907860db6f715684b90d3b4
+```
+
+### Partie 7 Variables d'envionnement et services : 
+```
+git checkout b66b96ba742aadff49667ed45b73aa47628341d2
+```
+
+### Partie 8 Routing :
+```
+git checkout 0b68cbc31f7ab77d5ce16035ff28e0bae15f405a
+```
+
+### Partie 9  Vuex :
+```
+git checkout a71ce501a2dcf96e14df757a18f891eef2d5b14c
+```
+
+### Partie 10 mapgetters :
+```
+git checkout 791db45b1d4d1abf88597658a267926c7fe2b4f2
+```
+
+### Partie 11 Mixins & Slots :
+```
+git checkout 267077aa04fd9bb591715316e79fdf56abcb9bb5
+```
+
+### Partie 12 Route guards & vuex persisted state : 
+```
+git checkout 01112606b80a069157ce70caf50c57690455cd4f
+```
+
+### Partie 13 Animations  :
+```
+git checkout 7b9276d4ea1040aa24b2749a577373c1076e7ef9
+```
+
+### Partie 14 Mise en production (PWA/Prerendering/Metas) :
+```
+git checkout db2c27a0c0e86a12c73e2cb04ab29961062dcd96
+```
