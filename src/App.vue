@@ -7,6 +7,10 @@
       <v-btn color="deep-orange" class="ml-4" :to="{ name: 'About' }"
         >A propos</v-btn
       >
+
+      <v-btn color="deep-orange" class="ml-4" :to="{ name: 'Admin' }"
+        >Admin</v-btn
+      >
       <v-btn
         @click="dialogBasket = true"
         color="pink"
