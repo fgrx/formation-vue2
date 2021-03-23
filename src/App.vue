@@ -28,7 +28,9 @@
 
     <v-main>
       <v-container>
-        <router-view></router-view>
+        <transition name="page-transition" mode="out-in">
+          <router-view></router-view>
+        </transition>
       </v-container>
     </v-main>
 
@@ -56,3 +58,19 @@ export default {
 };
 </script>
 
+<style scoped>
+.page-transition-enter {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+.page-transition-leave-to {
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+.page-transition-enter-active,
+.page-transition-leave-active {
+  transition: all 0.5s ease-out;
+}
+</style>
