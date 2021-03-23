@@ -2,6 +2,11 @@
 
 ## Project setup
 
+Installer json-server
+```
+npm install json-server
+```
+
 Se placer dans son répertoire d'exercice et exécuter la commande :
 ```
 git clone https://github.com/fgrx/formation-vue2.git
@@ -15,6 +20,13 @@ cd formation-vue2
 installer les dépendances avec
 ```
 npm install
+```
+
+## Lancer le projet
+
+Lancer le serveur d'api
+```
+json-server booksdb.json
 ```
 
 Lancer le projet avec
