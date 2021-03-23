@@ -44,4 +44,19 @@ export default {
 
     return res;
   },
+  async getDeviseInfos(code){
+    let res = null;
+    try {
+      //Ajoute la commande en base de données
+      res = await axios.get(`${process.env.VUE_APP_SERVER_URL}/devises?title=${code}`);
+    } catch (err) {
+      console.log("error while fetching devise", err);
+      EventBus.$emit(
+        "notification",
+        `Erreur interne, impossible d'obtenir le cours de ${code}`
+      );
+    }
+
+    return res;
+  }
 };
