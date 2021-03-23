@@ -1,8 +1,10 @@
 {
-  "users": [{
-    "login": "admin",
-    "password": "1234"
-  }],
+  "users": [
+    {
+      "login": "admin",
+      "password": "1234"
+    }
+  ],
   "books": [
     {
       "id": "5s48s81",
@@ -12,7 +14,7 @@
       "content": "Si un code sale peut fonctionner, il peut également compromettre la pérennité d'une entreprise de développement de logiciels. Chaque année, du temps et des ressources sont gaspillés à cause d'un code mal écrit. Toutefois, ce n'est pas une fatalité. Grâce à cet ouvrage, vous apprendrez à rédiger du bon code, ainsi qu'à le nettoyer « à la volée », et vous obtiendrez des applications plus robustes, plus évolutives et donc plus durables. Concret et pédagogique, ce manuel se base sur les bonnes pratiques d'une équipe de développeurs aguerris réunie autour de Robert C. Martin, expert logiciel reconnu. Il vous inculquera les valeurs d'un artisan du logiciel et fera de vous un meilleur programmeur. Coder proprement est décomposé en trois parties. La première décrit les principes, les motifs et les pratiques employés dans l'écriture d'un code propre. La deuxième est constituée de plusieurs études de cas à la complexité croissante. Chacune d'elles est un exercice de nettoyage : vous partirez d'un exemple de code présentant certains problèmes, et l'auteur vous expliquera comment en obtenir une version saine et performante. La troisième partie, enfin, sera votre récompense. Son unique chapitre contient une liste d'indicateurs éprouvés par l'auteur qui vous seront précieux pour repérer efficacement les défauts de votre code. ",
       "image": "https://images-na.ssl-images-amazon.com/images/I/517gj2lIN8L._SX406_BO1,204,203,200_.jpg",
       "price": 39.9,
-      "quantity": -1,
+      "quantity": -3,
       "lang": "fr",
       "rating": 4.5,
       "top": true
@@ -49,7 +51,7 @@
       "content": "Le refactoring, ou ré-ingénierie du code, est l'opération consistant à retravailler le code source d'un programme de façon à en améliorer la lisibilité et par voie de conséquence la maintenance. Il ne s'agit pas de le compléter ou d'en corriger des bugs, mais d'en améliorer la structure sans en altérer le fonctionnement. Ce livre, réédité fin 2018, est l'ouvrage de référence du refactoring. Il commence par un chapitre exemple pour bien faire comprendre ce qu'est (et n'est pas) le refactoring. Le chapitre suivant explique les principes et l'utilité de cette démarche. Le troisième chapitre montre comment repérer le code \"douteux\", et le quatrième comment construire des tests. Les chapitres suivants rassemblent un éventail de solutions à apporter en fonction des problèmes rencontrés. Dans cette deuxième édition  c'est le langage Javascript qui a été choisi pour illustrer les exemples.",
       "image": "https://images-na.ssl-images-amazon.com/images/I/41HFrFX6cyL._SX346_BO1,204,203,200_.jpg",
       "price": 39.9,
-      "quantity": -6,
+      "quantity": -8,
       "lang": "fr",
       "rating": 4,
       "top": true
@@ -127,5 +129,38 @@
       "lang": "en"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "total": 79.8,
+      "items": [
+        {
+          "id": "5s48s81",
+          "title": "Coder proprement",
+          "author": "Robert C.Martin",
+          "description": "Nettoyez votre code et devenez plus performant !",
+          "content": "Si un code sale peut fonctionner, il peut également compromettre la pérennité d'une entreprise de développement de logiciels. Chaque année, du temps et des ressources sont gaspillés à cause d'un code mal écrit. Toutefois, ce n'est pas une fatalité. Grâce à cet ouvrage, vous apprendrez à rédiger du bon code, ainsi qu'à le nettoyer « à la volée », et vous obtiendrez des applications plus robustes, plus évolutives et donc plus durables. Concret et pédagogique, ce manuel se base sur les bonnes pratiques d'une équipe de développeurs aguerris réunie autour de Robert C. Martin, expert logiciel reconnu. Il vous inculquera les valeurs d'un artisan du logiciel et fera de vous un meilleur programmeur. Coder proprement est décomposé en trois parties. La première décrit les principes, les motifs et les pratiques employés dans l'écriture d'un code propre. La deuxième est constituée de plusieurs études de cas à la complexité croissante. Chacune d'elles est un exercice de nettoyage : vous partirez d'un exemple de code présentant certains problèmes, et l'auteur vous expliquera comment en obtenir une version saine et performante. La troisième partie, enfin, sera votre récompense. Son unique chapitre contient une liste d'indicateurs éprouvés par l'auteur qui vous seront précieux pour repérer efficacement les défauts de votre code. ",
+          "image": "https://images-na.ssl-images-amazon.com/images/I/517gj2lIN8L._SX406_BO1,204,203,200_.jpg",
+          "price": 39.9,
+          "quantity": -1,
+          "lang": "fr",
+          "rating": 4.5,
+          "top": true
+        },
+        {
+          "id": "dsfds487878",
+          "title": "Refactoring - Comment améliorer le code existant",
+          "author": "Martin Fowler",
+          "description": "",
+          "content": "Le refactoring, ou ré-ingénierie du code, est l'opération consistant à retravailler le code source d'un programme de façon à en améliorer la lisibilité et par voie de conséquence la maintenance. Il ne s'agit pas de le compléter ou d'en corriger des bugs, mais d'en améliorer la structure sans en altérer le fonctionnement. Ce livre, réédité fin 2018, est l'ouvrage de référence du refactoring. Il commence par un chapitre exemple pour bien faire comprendre ce qu'est (et n'est pas) le refactoring. Le chapitre suivant explique les principes et l'utilité de cette démarche. Le troisième chapitre montre comment repérer le code \"douteux\", et le quatrième comment construire des tests. Les chapitres suivants rassemblent un éventail de solutions à apporter en fonction des problèmes rencontrés. Dans cette deuxième édition  c'est le langage Javascript qui a été choisi pour illustrer les exemples.",
+          "image": "https://images-na.ssl-images-amazon.com/images/I/41HFrFX6cyL._SX346_BO1,204,203,200_.jpg",
+          "price": 39.9,
+          "quantity": -6,
+          "lang": "fr",
+          "rating": 4,
+          "top": true
+        }
+      ],
+      "id": 1
+    }
+  ]
 }
