@@ -23,6 +23,7 @@
           bookDisponibility
         }}</Note>
 
+        <Price class="mb-5" v-if="book.price" :book="book" />
         <p>
           <v-btn
             @click="buyMixinAction(book)"
@@ -45,6 +46,7 @@
 import bookService from "@/services/bookService";
 import Loading from "@/components/Loading.vue";
 import Note from "@/components/Note.vue";
+import Price from "@/components/Price.vue";
 
 import BuyBook from "@/mixins/BuyBook";
 
@@ -52,6 +54,7 @@ export default {
   components: {
     Loading,
     Note,
+    Price,
   },
   mixins: [BuyBook],
   metaInfo() {
@@ -68,14 +71,11 @@ export default {
   },
   computed: {
     bookDisponibility() {
-      switch (this.book) {
-        case this.book <= 0:
-          return "Livre indisponible";
-        case this.book === 1:
-          return "Dernier exemplaire en stock !";
-        default:
-          return "En stock";
-      }
+      let status;
+      if (this.book.quantity > 0) status = "En stock";
+      if (this.book.quantity <= 0) status = "En rupture de stock";
+      if (this.book.quantity === 1) status = "Dernier exemplaire en stock";
+      return status;
     },
   },
   data() {
