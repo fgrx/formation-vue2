@@ -89,7 +89,18 @@ import bookService from "@/services/bookService";
 export default {
   name: "Home",
   components: { BookItem, Loading, DialogDiscounts },
-
+  metaInfo() {
+    return {
+      title: "Accueil - CodeBook",
+      titleTemplate: null,
+      meta: [
+        {
+          name: "description",
+          content: "Le shop dédié aux livres de programmation",
+        },
+      ],
+    };
+  },
   data: () => ({
     books: [],
     dialogDiscounts: false,

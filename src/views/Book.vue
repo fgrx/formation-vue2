@@ -54,6 +54,18 @@ export default {
     Note,
   },
   mixins: [BuyBook],
+  metaInfo() {
+    return {
+      title: this.book.title + " - CodeBook",
+      titleTemplate: null,
+      meta: [
+        {
+          name: "description",
+          content: "Toutes les informations sur " + this.book.title,
+        },
+      ],
+    };
+  },
   computed: {
     bookDisponibility() {
       switch (this.book) {
