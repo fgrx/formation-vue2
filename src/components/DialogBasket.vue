@@ -14,21 +14,26 @@
           <p v-if="!items.length">Aucun produit dans le panier</p>
 
           <v-list v-if="items.length">
-            <v-list-item v-for="item in items" :key="item.id">
-              <v-list-item-icon>
-                <v-btn @click="deleteItemAction(item)" icon>
-                  <v-icon color="pink">mdi-delete</v-icon>
-                </v-btn>
-              </v-list-item-icon>
+            <transition-group name="basket-transition" tag="div">
+              <v-list-item v-for="item in items" :key="item.id">
+                <v-list-item-icon>
+                  <v-btn @click="deleteItemAction(item)" icon>
+                    <v-icon color="pink">mdi-delete</v-icon>
+                  </v-btn>
+                </v-list-item-icon>
 
-              <v-list-item-content>
-                <v-list-item-title>{{ item.title }}</v-list-item-title>
-                <v-list-item-subtitle>{{ item.price }}€</v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
+                <v-list-item-content>
+                  <v-list-item-title>{{ item.title }}</v-list-item-title>
+                  <v-list-item-subtitle>{{ item.price }}€</v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
+            </transition-group>
           </v-list>
 
           <p><strong>Total : </strong>{{ totalBasket }}</p>
+          <p>
+            <a @click="sortBasket">Ranger par prix</a>
+          </p>
         </div>
       </v-card-text>
 
@@ -89,9 +94,24 @@ export default {
         this.$store.dispatch("updateItemsAction", []);
       }
     },
+    sortBasket() {
+      this.items.sort((a, b) => a.price - b.price);
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.basket-transition-leave-to {
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+.basket-transition-leave-active {
+  transition: all 0.5s ease-out;
+}
+
+.basket-transition-move {
+  transition: transform 0.5s ease-out;
+}
 </style>
