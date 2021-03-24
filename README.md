@@ -51,7 +51,7 @@ git checkout d1523db0706db446a477ba23703faae756f72565
 
 ### Partie 2 Composants et computed props: 
 ```
-git checkout b78cf85cbcd637796f5fa0b1fc7dff341983e3a3y
+git checkout beb06d8dba947d9a55c9cda58b647e7f1e8a5f92
 ```
 
 ### Partie 3 Life cycle hooks: 
