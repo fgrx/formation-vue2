@@ -1,6 +1,6 @@
-import Price from "@/components/Price";
-
 import { shallowMount } from "@vue/test-utils";
+import Price from "@/components/Price";
+import Vuetify from "vuetify";
 
 import {book} from "../../mock/book"
 
@@ -10,8 +10,9 @@ let wrapper;
 const roundNumber=(number)=>Math.round(number*100)/100
 
 beforeEach(() => {
+  const vuetify = new Vuetify();
   wrapper = shallowMount(Price, {
-    propsData: { book },
+    propsData: { book },vuetify
   });
 });
 
@@ -39,10 +40,10 @@ describe("Price component", () => {
 
   it("should switch between euros and dollars",async()=>{
       //Display price in euros
-      const convertButton=wrapper.find("[data-test-id='convert-button']")
+      const convertButton=wrapper.find("[data-test-id='convertButton']")
       expect(wrapper.find("[data-test-id='price']").text()).toContain(`${book.price}€`);
       expect(convertButton.text()).toContain("$")
-            
+
       const dollarsExchangeRate=0.84
 
       // Mock function that fetch the API
@@ -50,9 +51,13 @@ describe("Price component", () => {
       mockGetExchangeRate.mockReturnValue(dollarsExchangeRate)
       wrapper.vm.getExchangeRate=mockGetExchangeRate
 
+      wrapper.vm.exchangeRate=dollarsExchangeRate
+
     // Display price in dollars
       await convertButton.trigger('click')
+      await wrapper.vm.convertToAction()
       expect(mockGetExchangeRate).toHaveBeenCalled()
+
       const priceConversionInDollars=book.price*dollarsExchangeRate
       expect(wrapper.find("[data-test-id='price']").text()).toBe(`${priceConversionInDollars}$`);
       if(book.discount){
@@ -63,6 +68,7 @@ describe("Price component", () => {
 
     //display price in euros again
       await convertButton.trigger('click')
+      await wrapper.vm.convertToAction()
       expect(convertButton.text()).toContain("$")
       expect(wrapper.find("[data-test-id='price']").text()).toBe(`${book.price}€`);
       if(book.discount){

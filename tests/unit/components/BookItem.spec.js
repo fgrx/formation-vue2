@@ -1,43 +1,53 @@
-import BookItem from "@/components/BookItem"
-import { shallowMount,createLocalVue } from "@vue/test-utils"
+import { mount, createLocalVue } from "@vue/test-utils";
+import { book } from "../../mock/book";
+import Vuetify from "vuetify";
 
-import basket from "@/store/modules/basket"
-import Vuex from 'vuex'
+import BookItem from "@/components/BookItem";
 
-import {book} from "../../mock/book"
+import Vuex from "vuex";
+import basket from "@/store/modules/basket";
 
-const localVue = createLocalVue()
-localVue.use(Vuex)
+let wrapper;
+let store;
 
-let wrapper
-let store
+describe("BookItem >>>>>", () => {
+  beforeEach(() => {
+    const localVue = createLocalVue();
+    localVue.use(Vuex)
 
-beforeEach(()=>{
     store = new Vuex.Store({
       modules: {
-        basket
-      }
-    })
-    wrapper = shallowMount(BookItem,{propsData:{book},store,localVue})
-})
-
-afterEach(()=>{
-    wrapper.destroy()
-})
-
-describe("BookItem >>>>>",()=>{
-    it('should be mounted', () => {
-        expect(wrapper.isVueInstance).toBeTruthy();
+        basket,
+      },
     });
+    const vuetify = new Vuetify();
+    wrapper = mount(BookItem, {
+      propsData: { book },
+      store,
+      localVue,
+      vuetify,
+      stubs: ['router-link']
+    });
+  });
 
-    it('should contain a title',()=>{
-        expect(wrapper.find("[data-test-id='title-book']").text()).toContain(book.title)
-    })
+  afterEach(() => {
+    wrapper.destroy();
+  });
 
-    it("should add to store when buy button is clicked",async()=>{
-        const buyButton=wrapper.find("[data-test-id='buyButton']")
-        await buyButton.trigger("click")
-        const itemsInStore = store.state.basket.items
-        expect(itemsInStore.length).toBe(1)
-    })
-})
+  it("should be mounted", () => {
+    expect(wrapper.isVueInstance).toBeTruthy();
+  });
+
+  it("should contain a title", () => {
+    expect(wrapper.find("[data-test-id='title-book']").text()).toContain(
+      book.title
+    );
+  });
+
+  it("should add to store when buy button is clicked", async () => {
+    const buyButton = wrapper.find("[data-test-id='buyButton']");
+    await buyButton.trigger("click");
+    const itemsInStore = store.state.basket.items;
+    expect(itemsInStore.length).toBe(1);
+  });
+});

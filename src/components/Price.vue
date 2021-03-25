@@ -10,7 +10,7 @@
     <v-btn
       @click="convertToAction()"
       color="success"
-      data-test-id="convert-button"
+      data-test-id="convertButton"
       class="ml-3"
       small
       >convert to {{ targetDevise }}</v-btn
@@ -45,7 +45,6 @@ export default {
       discount: this.book.discount,
       textButton: `convert to ${this.targetDevise}`,
       currentDevise: "€",
-      exchangeRate: 1,
     };
   },
 
