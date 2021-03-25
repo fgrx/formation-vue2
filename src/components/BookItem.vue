@@ -6,7 +6,7 @@
         :alt="'couverture du livre : ' + book.title"
       ></v-img>
     </router-link>
-    <v-card-title>{{ book.title }}</v-card-title>
+    <v-card-title data-test-id="title-book">{{ book.title }}</v-card-title>
     <v-card-text>{{ book.description }}</v-card-text>
     <v-card-actions>
       <span v-if="book.quantity > 0">Disponible</span>
@@ -20,7 +20,13 @@
     </v-card-actions>
 
     <v-card-actions>
-      <v-btn @click="buyMixinAction(book)" color="orange" block>Acheter</v-btn>
+      <v-btn
+        @click="buyMixinAction(book)"
+        color="orange"
+        block
+        data-test-id="buyButton"
+        >Acheter</v-btn
+      >
     </v-card-actions>
   </v-card>
 </template>
