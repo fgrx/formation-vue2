@@ -6,7 +6,7 @@ describe('functions', () => {
     });
 
     it("should return an error",()=>{
-        expect(functions.multiplication(2,"a")).toBe("error")
+        expect(()=>functions.multiplication(2,"a")).toThrowError()
     })
 
     it("should display contain name and age",()=>{
