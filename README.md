@@ -1,4 +1,14 @@
+# Support de cours
+Le support est téléchargeable à l'adresse :
+[Support de cours en PDF](https://u.pcloud.link/publink/show?code=XZPSK2XZ35dSB3CoBxSRrx8r4yJuV0ldoB3k)
+
 # Exercice pour la formation Vue.js
+
+## Fichiers nécessaires aux exercices
+
+[booksdb.js](https://u.pcloud.link/publink/show?code=XZzSK2XZtFvNhB5cMp0jd8Ru1qjFIbNiFkF7)
+
+[booksdb.json](https://u.pcloud.link/publink/show?code=XZeSK2XZR5A5XUfqwJQJnvX5WMnhW8E45YmV)
 
 ## Project setup
 
