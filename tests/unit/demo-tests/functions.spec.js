@@ -1,0 +1,22 @@
+import functions from "./functions"
+
+describe('functions', () => {
+    it('should return multiplication', () => {
+        expect(functions.multiplication(2,5)).toBe(10)
+    });
+
+    it("should return an error",()=>{
+        expect(functions.multiplication(2,"a")).toBe("error")
+    })
+
+    it("should display contain name and age",()=>{
+        const person={
+            name: "Grignoux",
+            firstName:"Fabien",
+            age:"39"
+        }
+        expect(functions.displayPersonInfos(person)).toContain("Fabien")
+        expect(functions.displayPersonInfos(person)).toContain("Grignoux")
+        expect(functions.displayPersonInfos(person)).toContain("39")
+    })
+});

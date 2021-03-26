@@ -43,14 +43,15 @@ describe("Price component", () => {
       const convertButton=wrapper.find("[data-test-id='convertButton']")
       expect(wrapper.find("[data-test-id='price']").text()).toContain(`${book.price}€`);
       expect(convertButton.text()).toContain("$")
-
+      
       const dollarsExchangeRate=0.84
-
+      
       // Mock function that fetch the API
       const mockGetExchangeRate = jest.fn()
       mockGetExchangeRate.mockReturnValue(dollarsExchangeRate)
       wrapper.vm.getExchangeRate=mockGetExchangeRate
-
+      
+      
       wrapper.vm.exchangeRate=dollarsExchangeRate
 
     // Display price in dollars
