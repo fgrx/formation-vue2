@@ -1,4 +1,4 @@
-export const book = {
+export const bookMock = {
   id: "5s48s81",
   title: "Coder proprement",
   author: "Robert C.Martin",

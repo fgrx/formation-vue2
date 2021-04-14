@@ -1,5 +1,5 @@
 import { mount, createLocalVue } from "@vue/test-utils";
-import { book } from "../../mock/book";
+import { bookMock } from "../../mock/book";
 import Vuetify from "vuetify";
 
 import BookItem from "@/components/BookItem";
@@ -13,7 +13,7 @@ let store;
 describe("BookItem >>>>>", () => {
   beforeEach(() => {
     const localVue = createLocalVue();
-    localVue.use(Vuex)
+    localVue.use(Vuex);
 
     store = new Vuex.Store({
       modules: {
@@ -22,11 +22,11 @@ describe("BookItem >>>>>", () => {
     });
     const vuetify = new Vuetify();
     wrapper = mount(BookItem, {
-      propsData: { book },
+      propsData: { book: bookMock },
       store,
       localVue,
       vuetify,
-      stubs: ['router-link']
+      stubs: ["router-link"],
     });
   });
 
@@ -40,7 +40,7 @@ describe("BookItem >>>>>", () => {
 
   it("should contain a title", () => {
     expect(wrapper.find("[data-test-id='title-book']").text()).toContain(
-      book.title
+      bookMock.title
     );
   });
 
