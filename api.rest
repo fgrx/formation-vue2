@@ -1,0 +1,11 @@
+GET http://localhost:3000/comments?bookID=5s48s81
+
+###
+POST  http://localhost:3000/comments
+content-type: application/json
+
+{
+    "bookID":"5s48s81",
+    "title":"Premier commentaire",
+    "content":"La vie est belle :)"
+}

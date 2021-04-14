@@ -11,6 +11,26 @@
       "exchangeRate": 0.84
     }
   ],
+  "comments": [
+    {
+      "bookID": "5s48s81",
+      "title": "Premier commentaire",
+      "content": "La vie est belle :)",
+      "id": 1
+    },
+    {
+      "bookID": "5s48s81",
+      "title": "Nouveau commentaire",
+      "content": "Bonjour tout le monde !",
+      "id": 3
+    },
+    {
+      "bookID": "5s48s81",
+      "title": "Dernier commentaire",
+      "content": "Nouveau commentaire",
+      "id": 4
+    }
+  ],
   "books": [
     {
       "id": "5s48s81",
@@ -23,7 +43,7 @@
       "quantity": 4,
       "lang": "fr",
       "rating": 4.5,
-      "discount":20,
+      "discount": 20,
       "top": true
     },
     {
