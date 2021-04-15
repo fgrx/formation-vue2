@@ -18,13 +18,12 @@ describe(">>>>>> Comments ", () => {
   mockGetComments.mockReturnValue(commentsMock);
   commentService.getComments = mockGetComments;
 
-  beforeEach(async () => {
+  beforeEach(() => {
     wrapper = shallowMount(Comments, {
       localVue,
       propsData: { book: bookMock },
     });
     wrapper.vm.comments = commentsMock;
-    await wrapper.vm.$nextTick();
   });
 
   afterEach(() => {
@@ -41,22 +40,21 @@ describe(">>>>>> Comments ", () => {
     );
   });
 
-  it("should load comments", async () => {
+  it("should load comments", () => {
     expect(wrapper.find("[data-test-id='nb-comments']").text()).toContain(
       commentsMock.length
     );
   });
 
-  it("should display comments", async () => {
+  it("should display comments", () => {
     expect(wrapper.find("[data-test-id='title-comments']").text()).toContain(
       commentsMock[0].title
     );
   });
-  it("should have button enabled", async () => {
+  it("should have button enabled", () => {
     expect(wrapper.vm.isDisabled).toBeTruthy();
     wrapper.vm.titleComment = "Hello";
     wrapper.vm.contentComment = "world";
-    await wrapper.vm.$nextTick();
     expect(wrapper.vm.isDisabled).toBeFalsy();
   });
 
@@ -75,11 +73,8 @@ describe(">>>>>> Comments ", () => {
     wrapper.vm.titleComment = comment.title;
     wrapper.vm.contentComment = comment.content;
 
-    wrapper.vm.addCommentAction();
-    // const button = wrapper.find("[data-test-id='add-button']");
-    // await button.trigger("click");
-
-    await wrapper.vm.$nextTick();
+    const button = wrapper.find("[data-test-id='add-button']");
+    await button.vm.$emit("click");
 
     expect(wrapper.findAll("[data-test-id='comment']").length).toBe(
       nbCommentsMock + 1

@@ -148,5 +148,5 @@ git checkout db2c27a0c0e86a12c73e2cb04ab29961062dcd96
 ### Partie 15 Unit Testing avec Jest:
 
 ```
-git checkout d932a93d83720746dd1ddfccf9695701191d7ae8
+git checkout c94eed27765f21574a8705db33728dc6b64f8c9e
 ```
