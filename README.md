@@ -150,3 +150,10 @@ git checkout db2c27a0c0e86a12c73e2cb04ab29961062dcd96
 ```
 git checkout c94eed27765f21574a8705db33728dc6b64f8c9e
 ```
+
+### Partie 16 Typescript
+
+```
+git checkout
+0b0a2fe9a3107658c64800ae214ca45fb90b0c54
+```
