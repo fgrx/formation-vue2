@@ -9,3 +9,6 @@ content-type: application/json
     "title":"Premier commentaire",
     "content":"La vie est belle :)"
 }
+
+###
+GET http://localhost:3000/authors?name=Robert%20C.Martin

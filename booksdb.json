@@ -162,6 +162,13 @@
       "lang": "en"
     }
   ],
+  "authors": [
+    {
+      "name": "Robert C.Martin",
+      "bio": "Robert Cecil Martin (familièrement connu sous le nom Uncle Bob1) est un ingénieur logiciel et auteur américain. Il est co-auteur du Manifeste Agile2,3. Il dirige maintenant la société de conseil Uncle Bob Consulting LLC et le site web Clean Coders, qui héberge des vidéos basées sur son expérience et ses publications.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Robert_Cecil_Martin.png/260px-Robert_Cecil_Martin.png"
+    }
+  ],
   "orders": [
     {
       "total": 79.8,

@@ -12,7 +12,13 @@
         </v-col>
         <v-col cols="12" sm="8">
           <h1>{{ book.title }}</h1>
-          <p class="book__author">{{ book.author }}</p>
+          <p class="book__author">
+            <router-link
+              :to="{ name: 'Author', params: { name: book.author } }"
+            >
+              {{ book.author }}
+            </router-link>
+          </p>
           <v-rating
             readonly="readonly"
             v-model="book.rating"
@@ -83,7 +89,9 @@ export default {
   },
   async created() {
     const bookID = this.$route.params.id;
+    this.isLoading = true;
     const bookData = await bookService.getBookByID(bookID);
+    this.isLoading = false;
     this.book = bookData.data;
   },
 };
