@@ -3,7 +3,7 @@ import { shallowMount, createLocalVue } from "@vue/test-utils";
 import { commentsMock } from "../../mock/comments";
 import { bookMock } from "../../mock/book";
 
-import Comments from "@/components/Comments";
+import Comments from "@/components/Comments.vue";
 
 import commentService from "@/services/commentService";
 

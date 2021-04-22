@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import Price from "@/components/Price";
+import Price from "@/components/Price.vue";
 import Vuetify from "vuetify";
 
 import { bookMock } from "../../mock/book";

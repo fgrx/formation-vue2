@@ -2,7 +2,7 @@ import { mount, createLocalVue } from "@vue/test-utils";
 import { bookMock } from "../../mock/book";
 import Vuetify from "vuetify";
 
-import BookItem from "@/components/BookItem";
+import BookItem from "@/components/BookItem.vue";
 
 import Vuex from "vuex";
 import basket from "@/store/modules/basket";
