@@ -29,8 +29,18 @@ export default Vue.extend({
   data() {
     return {
       author: {} as IAuthor,
-      isLoading: false,
+      isLoading: false as Boolean,
     };
+  },
+
+  computed: {
+    displayName(): string {
+      if (this.author.nickname)
+        return `${this.author.name} aka "${this.author.nickname}"`;
+      else {
+        return this.author.name;
+      }
+    },
   },
 
   async created() {
