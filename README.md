@@ -11,6 +11,9 @@ Le support est téléchargeable à l'adresse :
 
 [booksdb.json](https://u.pcloud.link/publink/show?code=XZeSK2XZR5A5XUfqwJQJnvX5WMnhW8E45YmV)
 
+## Démo
+[https://bookshopvue.netlify.app/](https://bookshopvue.netlify.app/)
+
 ## Project setup
 
 Installer json-server
