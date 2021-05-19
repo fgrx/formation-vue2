@@ -89,7 +89,9 @@ export default {
       const order = { total: this.totalBasket, items: this.items };
       const result = await shopService.buyAction(order);
 
-      if (result.status === 201) {
+      const successCodes = [200, 201, 204];
+
+      if (successCodes.includes(result.status)) {
         this.thankYouMessage = "Merci pour votre commande !";
         this.$store.dispatch("updateItemsAction", []);
       }
