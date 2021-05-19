@@ -157,3 +157,10 @@ git checkout c94eed27765f21574a8705db33728dc6b64f8c9e
 git checkout
 1bbe587b2250827166492abb3d48cd490a73272a
 ```
+
+### Version avec la liaison backend et authentification par token JWT
+
+```
+git checkout
+2651e436a5fe9b00c069e74d1890fc2507cc3a85
+```
