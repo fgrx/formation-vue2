@@ -26,8 +26,8 @@ import userService from "@/services/userService";
 export default {
   data() {
     return {
-      login: "admin",
-      password: "1234",
+      login: "admin@admin.com",
+      password: "123456",
       error: "",
     };
   },
@@ -40,8 +40,8 @@ export default {
 
       const userFound = testConnexion.data;
 
-      if (userFound.length) {
-        this.$store.dispatch("updateUserAction", { name: this.login });
+      if (userFound.token) {
+        this.$store.dispatch("updateUserAction", userFound);
         this.$router.push({ name: "Admin" });
       } else {
         this.error = "Mauvais login ou mot de passe";
@@ -51,5 +51,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
