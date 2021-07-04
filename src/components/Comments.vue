@@ -73,7 +73,7 @@ export default {
 
       this.comments.push(comment);
 
-      commentService.addComment();
+      commentService.addComment(comment);
     },
   },
   //   created () {
